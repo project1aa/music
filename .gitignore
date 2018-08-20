@@ -1,0 +1,8 @@
+*.pyc
+*.pyt
+db.sqlite3
+__pycache__
+migrations/0*
+files/songs/*
+files/images/songs/*
+files/images/singers/*
