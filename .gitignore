@@ -2,7 +2,8 @@
 *.pyt
 db.sqlite3
 __pycache__
-migrations/0*
+myproject/settings.py
+media/*
 files/songs/*
 files/images/songs/*
 files/images/singers/*
