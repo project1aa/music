@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 import os
-import time
+from datetime import timedelta
 from mutagen.mp3 import MP3
 
 
@@ -46,18 +46,15 @@ class Song(models.Model):
     # tags
     image = models.ImageField(upload_to='files/images/songs')
     views = models.PositiveIntegerField(default=0)
+    layrics = models.TextField(blank=True, default='')
 
     def list_genres(self):
         return ', '.join([genre.name for genre in self.genres.all()])
 
 
     def save(self, *args, **kwargs):
-        self.duration = '10100' # get_filesize(self.file1)
-        print(self.file1.file)
-        print(self.file1.file.getvalue())
-        print(self.file1.path)
-        print(os.path.realpath(self.file1.url))
-        MP3(self.file1.url)
+        super().save(*args, **kwargs)
+        self.duration = get_filesize(self.file1.path)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -67,12 +64,14 @@ class Song(models.Model):
         ordering = ('-id',)
 
 
-def get_filesize(file):
-    print(file.path)
-    audio = MP3(file.path)
-    length = audio.info.length
-    td = str(timedelta(seconds=length))
-    tds = td.split(':')
-    minutes = tds[1]
-    seconds = tds[2].split('.')[0]
-    return '{}:{}'.format(minutes, seconds)
+def get_filesize(filename):
+    try:
+        audio = MP3(filename)
+        length = audio.info.length
+        td = str(timedelta(seconds=length))
+        tds = td.split(':')
+        minutes = tds[1]
+        seconds = tds[2].split('.')[0]
+        return '{}:{}'.format(minutes, seconds)
+    except FileNotFoundError:
+        raise ValidationError('Found Not Found')

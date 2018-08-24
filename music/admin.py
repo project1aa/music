@@ -17,7 +17,7 @@ class SongAdmin(admin.ModelAdmin):
 
     def get_genres(self, obj):
         return obj.list_genres()
-    get_genres.short_description = 'genre_list'
+    get_genres.short_description = 'genres'
 
     list_display = ('name', 'singer', 'get_genres', 'duration')
 
