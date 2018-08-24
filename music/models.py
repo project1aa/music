@@ -28,6 +28,9 @@ class Singer(models.Model):
         return self.name
 
 
+def song_directory_path(instance, filename):
+    return 'files/{0}/{1}'.format(instance.singer.name, filename)
+
 class Song(models.Model):
     types = (
         ('mp3', 'MP3'),
@@ -35,16 +38,17 @@ class Song(models.Model):
         ('ogg', 'OGG'),
     )
 
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=80)
+    slug = models.SlugField(max_length=80)
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre)
     type = models.CharField(max_length=255, choices=types, default='mp3')
     created = models.DateField()
     duration = models.CharField(max_length=5)
-    file1 = models.FileField(upload_to='files/songs/', blank=True)
-    file2 = models.FileField(upload_to='files/songs/', blank=True)
+    file1 = models.FileField(upload_to=song_directory_path, blank=True)
+    file2 = models.FileField(upload_to=song_directory_path, blank=True)
     # tags
-    image = models.ImageField(upload_to='files/images/songs')
+    image = models.ImageField(upload_to=song_directory_path)
     views = models.PositiveIntegerField(default=0)
     layrics = models.TextField(blank=True, default='')
 
@@ -62,6 +66,7 @@ class Song(models.Model):
 
     class Meta:
         ordering = ('-id',)
+        unique_together = ('name', 'singer')
 
 
 def get_filesize(filename):
