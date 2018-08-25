@@ -6,3 +6,9 @@ class ContactUs(models.Model):
     email = models.EmailField()
     text = models.TextField()
     is_read = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Contact Us'
+
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.email)
