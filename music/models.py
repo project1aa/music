@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.template.defaultfilters import slugify
 import os
 from datetime import timedelta
 from mutagen.mp3 import MP3
@@ -39,7 +40,7 @@ class Song(models.Model):
     )
 
     name = models.CharField(max_length=80)
-    slug = models.SlugField(max_length=80)
+    slug = models.SlugField(max_length=80, allow_unicode=True)
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre)
     type = models.CharField(max_length=255, choices=types, default='mp3')
@@ -50,14 +51,14 @@ class Song(models.Model):
     # tags
     image = models.ImageField(upload_to=song_directory_path)
     views = models.PositiveIntegerField(default=0)
-    layrics = models.TextField(blank=True, default='')
+    lyrics = models.TextField(blank=True, default='')
 
     def list_genres(self):
         return ', '.join([genre.name for genre in self.genres.all()])
 
-
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        self.slug = 'دانلود-آهنگ-{}-{}'.format(self.singer.name, self.slug)
         self.duration = get_filesize(self.file1.path)
         super().save(*args, **kwargs)
 

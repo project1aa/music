@@ -8,6 +8,11 @@ class SongAdmin(admin.ModelAdmin):
     readonly_fields = ('duration', 'views',)
     # search fields
     search_fields = ('name', 'singer__name')
+
+    # fields
+    #fields = ('name', 'singer', 'genres', 'type', 'created',
+    #    'file1', 'file2', 'image', 'lyrics')
+
     # display fields for index
     def singer_name(self, obj):
         return obj
@@ -21,6 +26,14 @@ class SongAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'singer', 'get_genres', 'duration')
 
+    # automatically slugify song name
+    prepopulated_fields = {'slug': ('name',)}
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            self.prepopulated_fields = {}
+            return self.readonly_fields + ('slug',)
+        return self.readonly_fields
 
 #admin.site.register(Song)
 admin.site.register(Singer)
