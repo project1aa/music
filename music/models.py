@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.template.defaultfilters import slugify
+from django.utils.text import slugify
 import os
 from datetime import timedelta
 from mutagen.mp3 import MP3
@@ -33,18 +33,11 @@ def song_directory_path(instance, filename):
     return 'files/{0}/{1}'.format(instance.singer.name, filename)
 
 class Song(models.Model):
-    types = (
-        ('mp3', 'MP3'),
-        ('wav', 'WAV'),
-        ('ogg', 'OGG'),
-    )
-
     name = models.CharField(max_length=80)
     slug = models.SlugField(max_length=80, allow_unicode=True)
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre)
-    type = models.CharField(max_length=255, choices=types, default='mp3')
-    created = models.DateField()
+    created = models.DateField(auto_now_add=True)
     duration = models.CharField(max_length=5)
     file1 = models.FileField(upload_to=song_directory_path, blank=True)
     file2 = models.FileField(upload_to=song_directory_path, blank=True)
@@ -58,7 +51,7 @@ class Song(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.slug = 'دانلود-آهنگ-{}-{}'.format(self.singer.name, self.slug)
+        self.slug = 'دانلود-آهنگ-{}-{}'.format(self.singer.name, slugify(self.name))
         self.duration = get_filesize(self.file1.path)
         super().save(*args, **kwargs)
 
