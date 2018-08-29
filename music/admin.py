@@ -11,7 +11,7 @@ class SongAdmin(admin.ModelAdmin):
 
     # fields
     fields = ('name', 'singer', 'genres',
-        'file1', 'file2', 'image', 'lyrics', 'duration', 'views')
+        'file1', 'file2', 'image', 'lyrics', 'tags', 'duration', 'views')
 
     # display fields for index
     def singer_name(self, obj):

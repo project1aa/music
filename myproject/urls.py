@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('music.urls', namespace='music')),
+    path('short', include('shorturls.urls')),
 ]
 
 if settings.DEBUG:

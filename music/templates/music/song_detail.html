@@ -1,1 +1,5 @@
+{% load shorturl %}
 {{ song }}
+<a href="{% shorturl object %}">Short url</a>
+<br>
+{{ song.tags.all|join:", " }}
