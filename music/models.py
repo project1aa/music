@@ -37,7 +37,7 @@ def song_directory_path(instance, filename):
 class Song(models.Model):
     name = models.CharField(max_length=80)
     slug = models.SlugField(max_length=80, allow_unicode=True)
-    singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
+    singer = models.ForeignKey('Singer', on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre)
     created = models.DateField(auto_now_add=True)
     duration = models.CharField(max_length=5)
@@ -49,9 +49,14 @@ class Song(models.Model):
     image = models.ImageField(upload_to=song_directory_path)
     views = models.PositiveIntegerField(default=0)
     lyrics = models.TextField(blank=True, default='')
+    # order = models.AutoField()
+    languages = models.ManyToManyField('Language')
 
     def list_genres(self):
         return ', '.join([genre.name for genre in self.genres.all()])
+
+    def list_lagenres(self):
+        return ', '.join([lang.name for lang in self.languages.all()])
 
     def save(self, *args, **kwargs):
         self.slug = 'دانلود-آهنگ-{}-{}'.format(self.singer.name, slugify(self.name, allow_unicode=True))
@@ -90,3 +95,10 @@ def get_filesize(filename):
         return '{}:{}'.format(minutes, seconds)
     except FileNotFoundError:
         raise ValidationError('Found Not Found')
+
+
+class Language(models.Model):
+    name = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.name

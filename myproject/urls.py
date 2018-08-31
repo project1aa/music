@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('', include('music.urls', namespace='music')),
     path('short', include('shorturls.urls')),
+    path('maintenance-mode', include('maintenance_mode.urls')),
 ]
 
 if settings.DEBUG:
