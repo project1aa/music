@@ -3,9 +3,8 @@ from django.core.exceptions import ValidationError
 from django.utils.text import slugify
 from django.urls import reverse
 import os
-from datetime import timedelta
-from mutagen.mp3 import MP3
 from taggit.managers import TaggableManager
+from .helpers import get_filesize
 
 
 # Models:
@@ -84,18 +83,12 @@ class Song(models.Model):
         return reverse('music:detail', kwargs={'pk': self.pk})
 
 
-def get_filesize(filename):
-    try:
-        audio = MP3(filename)
-        length = audio.info.length
-        td = str(timedelta(seconds=length))
-        tds = td.split(':')
-        minutes = tds[1]
-        seconds = tds[2].split('.')[0]
-        return '{}:{}'.format(minutes, seconds)
-    except FileNotFoundError:
-        raise ValidationError('Found Not Found')
+class Order(models.Model):
+    song = models.ForeignKey('Song', on_delete=models.CASCADE)
+    position = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return '{} - {}'.format(self.song.name, self.position)
 
 class Language(models.Model):
     name = models.CharField(max_length=32)

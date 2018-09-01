@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Song, Singer, Genre, Language
+from .models import Song, Singer, Genre, Language, Order
 
 
 @admin.register(Song)
@@ -46,3 +46,4 @@ class SongAdmin(admin.ModelAdmin):
 admin.site.register(Singer)
 admin.site.register(Genre)
 admin.site.register(Language)
+admin.site.register(Order)

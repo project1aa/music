@@ -1,0 +1,206 @@
+.thumbnail {
+	min-height: 200px;
+	max-height: 300px;
+}
+
+.space {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.container-content {
+	padding: 10px;
+	margin: 16px;
+}
+
+.list-no-style {
+  padding: 0px;
+  list-style: none;
+}
+
+.btn-space {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.big-label {
+	font-size: 14px;
+}
+
+.user-info {
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.big {
+	font-size: 22px;
+}
+
+.top-space {
+	margin-top: 40px;
+}
+
+.news-text {
+	font-size: 20px;
+}
+
+.news-date {
+	font-size: 14px;
+}
+
+.news-top-space {
+	margin-top: 42px;
+}
+
+.more {
+	background: #ff3543;
+	color: #fefefe;
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+.header {
+	display: inline;
+}
+
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.footer, .push {
+    height: 155px;
+}
+
+.footer {
+  width: 100%;
+  background-color: #01a89e;
+}
+
+.container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.cover-home {
+	min-height: 200px;
+	min-width: 200px;
+	height: 200px;
+	width: 200px;
+	margin: 0 auto;
+}
+
+.cover-detail {
+	min-height: 320px;
+	min-width: 460px;
+	height: 320px;
+	width: 460px;
+}
+
+.news-list {
+	margin-top: 10px;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.header-top {
+	margin-top: 20px;
+}
+
+.header-bottom {
+	margin-bottom: 20px;
+}
+
+.slider {
+	width: 100%;
+	height: 500px !important;
+	min-height: 500px !important;
+}
+
+
+/*
+    CSS for social media icons
+*/
+
+#social:hover {
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    -o-transform:scale(1.1);
+}
+
+#social {
+    -webkit-transform:scale(0.8);
+    -moz-transform:scale(0.8);
+    -o-transform:scale(0.8);
+    -webkit-transform-duration:0.5s;
+    -moz-transform-duration:0.5s;
+    -o-transform-duration:0.5s;
+}
+
+.social-fb:hover {
+    color: #385998;
+}
+
+.social-tw:hover {
+    color: #4099FF;
+}
+
+.social-ig:hover {
+    color: #d34836;
+}
+
+.social-tm:hover {
+    color: #f39c12;
+}
+
+/* end Footer */
+
+
+.footer-text {
+	font-size: 17px;
+}
+
+
+/*
+	Font
+*/
+
+
+@font-face {
+    font-family:'BYekan';
+    src:url('../fonts/BYekan.eot');
+    src:local('bYekan'),
+        local('b Yekan'),
+        url('../fonts/BYekan.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BYekan.woff') format('woff'),
+        url('../fonts/BYekan.ttf') format('truetype'),
+        url('../fonts/BYekan.svg#BYekan') format('svg');
+    font-style:normal;
+    font-weight:normal;
+}
+
+body {
+	background-color: #f0f3f6;
+    font-family:BYekan, Tahoma, Geneva, sans-serif;
+}
+
+/* END Font */
+
+
+.label-big {
+    font-size: 16px !important;
+}

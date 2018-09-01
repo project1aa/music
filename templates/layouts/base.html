@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Song Album Singer ترانه آهنگ آلبوم خواننده">
+    <title>{% block title %}تک صدا{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-rtl.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+              	    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                		    <span class="sr-only">Toggle navigation</span>
+              	 		    <span class="icon-bar"></span>
+              			    <span class="icon-bar"></span>
+              			    <span class="icon-bar"></span>
+            		    </button>
+            		    <a class="navbar-brand" href="{% url 'music:index' %}">تک صدا</a>
+	     	        </div>
+
+          		  <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li {% if home_active %}class="active"{% endif %}>
+                            <a href="{% url 'music:index' %}">خانه</a>
+                        </li>
+                        <li>
+                            <a href="#">اخبار</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                تماس با ما
+                            </a>
+                        </li>
+                        <li>
+                            <form class="navbar-form" action="#">
+                                <div class="form-group">
+                                    <input type="text" name='q' class="form-control" placeholder="جستجو...">
+                                </div>
+                                <button type="جستجو" class="btn btn-default">جستجو</button>
+                            </form>
+                        </li>
+                    </ul>
+          		  </div>
+        	  </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid container-content" style="margin-top: 0px; min-height: 480px;">
+        <div class="row">
+            {% if messages %}
+                <ul class="messages list-no-style">
+                    {% for message in messages %}
+                        <li class="text-center {% if message.tags %} alert alert-{{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="push"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="padding-top: 20px; position: relative; bottom: 0; border-top: 1px solid #225378; margin-right: 0px; background-color: lightblue;">
+        <div class="container-fluid">
+            <div class="row" style="padding-bottom: 10px;">
+                <!-- links col -->
+                <div class="col-md-3">
+                    <ul style="list-style: none; margin-bottom: 0px;">
+                        <li style="margin-bottom: 15px;">
+                            <a href="W">فیلم</a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#">تئاتر</a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#">کنسرت</a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#">اخبار</a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#">بازیابی رمز عبور</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- second col -->
+                <div class="col-md-5">
+                    <h1 style="margin-top: 0px; margin-bottom: 15px; color: #225378; font-size: 20px; text-transform: uppercase; letter-spacing: 2px;">
+                        پاج تیکت
+                    </h1>
+                    <p class="footer-text" style="text-align: justify;">
+                        بزرگترین سامانه خرید بلیت سینما، همایش، تئاتر و کنسرت در جنوب کشور می باشد. تمامی خدمات اين سـامانه، حسب مورد دارای مجوز های لازم از مراجع مربوطه می‌باشد و فعاليت‌های ايـن سايت تابع قوانين و مقررات جمهـوری اسـلامی ايران است.
+                    </p>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <h1 style="margin-top: 0px; margin-bottom: 15px; color: #225378; font-size: 16px; text-transform: uppercase; letter-spacing: 2px;">
+                        ما را در شبکه های اجتماعی دنبال کنید
+                    </h1>
+
+                    <a href="https://www.facebook.com" style="margin-left: 20px">
+                        <i class="fa fa-facebook-square fa-3x social-fb social-space" id="social"></i>
+                    </a>
+                    <a href="https://www.twitter.com" style="margin-left: 20px">
+                        <i class="fa fa-twitter-square fa-3x social-tw social-space" id="social"></i>
+                    </a>
+                    <a href="https://instagram.com/" style="margin-left: 20px">
+                        <i class="fa fa-instagram fa-3x social-ig" id="social"></i>
+                    </a>
+                    <a href="https://www.telegram.com" style="margin-left: 20px">
+                        <i class="fa fa-telegram fa-3x social-tm" id="social"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-8 col-md-offset-3 footer-text">
+                    تمامی حقوق این وب سایت برای پاج تیکت محفوظ می باشد. | 1396 - 1394 © | طراحی وب سایت از پاج
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer END -->
+
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    {% block javascripts %}
+    {% endblock %}
+
+</body>
+</html>
