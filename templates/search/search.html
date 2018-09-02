@@ -1,0 +1,116 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load jformat %}
+
+{% block title %}{{ block.super }} | نتایج جستجو {{ object.title }}{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading heading big text-center">نتایج جستجو</div>
+            <div class="panel-body">
+                <h2 class="well text-center">فیلم ها <span class="label label-info">{{ films.count }}</span></h2>
+
+                {% if films.count > 0 %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>نام فیلم</th>
+                                <th>کارگردان</th>
+                                <th>سال ساخت</th>
+                                <th>اکران</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for film in films %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>
+                                        <a href="{{ film.get_absolute_url }}">
+                                            {{ film.title }}
+                                        </a>
+                                    </td>
+                                    <td>{{ film.director }}</td>
+                                    <td><span dir="ltr">{{ film.release_date|jformat:"%Y" }}</span></td>
+                                    <td><span dir="ltr">{{ film.running_time|jformat:"%Y-%m-%d %H:%M:%S" }}</span></td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                    </table>
+                {% else %}
+                    <p>نتیجه ای یافت نشد.</p>
+                {% endif %}
+                <hr>
+
+                <h2 class="well text-center" style="margin-top: 80px;">تئاتر ها <span class="label label-info">{{ theaters.count }}</span></h2>
+
+                {% if theaters.count > 0 %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>نام فیلم</th>
+                                <th>کارگردان</th>
+                                <th>اجرا</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for theater in theaters %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>
+                                        <a href="{{ theater.get_absolute_url }}">
+                                            {{ theater.title }}
+                                        </a>
+                                    </td>
+                                    <td>{{ theater.director }}</td>
+                                    <td>{{ theater.running_time }}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                    </table>
+                {% else %}
+                    <p>نتیجه ای یافت نشد.</p>
+                {% endif %}
+                <hr>
+
+                <h2 class="well text-center" style="margin-top: 80px;">کنسرت ها <span class="label label-info">{{ concerts.count }}</span></h2>
+
+                {% if concerts.count > 0 %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>کنسرت</th>
+                                <th>خواننده</th>
+                                <th>اجرا</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for concert in concerts %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>
+                                        <a href="{{ concert.get_absolute_url }}">
+                                            {{ concert.title }}
+                                        </a>
+                                    </td>
+                                    <td>{{ concert.artist }}</td>
+                                    <td>{{ concert.running_time }}</td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                    </table>
+                {% else %}
+                    <p>نتیجه ای یافت نشد.</p>
+                {% endif %}
+
+            </div>
+        </div>
+	</div>
+</div>
+
+{% endblock %}

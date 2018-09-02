@@ -108,7 +108,7 @@ html, body {
 	min-height: 320px;
 	min-width: 460px;
 	height: 320px;
-	width: 460px;
+	width: 460px;	
 }
 
 .news-list {
@@ -194,7 +194,6 @@ html, body {
 }
 
 body {
-	background-color: #f0f3f6;
     font-family:BYekan, Tahoma, Geneva, sans-serif;
 }
 

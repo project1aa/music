@@ -1,0 +1,13 @@
+{% load static %}
+<div class="row space">
+	{% if advertisements.count > 0 %}
+		{% for ad in advertisements %}
+			<div class="well">
+				<p>{{ ad.text }}</p>
+				<a href="{{ ad.url }}">
+	    			<img class="img-responsive img-thumbnail" src="{{ ad.image.url }}">
+	   			</a>
+   			</div>
+   		{% endfor %}
+   	{% endif %}
+</div>

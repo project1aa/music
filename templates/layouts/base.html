@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Song Album Singer ترانه آهنگ آلبوم خواننده">
-    <title>{% block title %}تک صدا{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="Music,Song,Album,Download,Singer,موسیقی,ترانه,آهنگ,آلبوم,دانلود,خواننده">
+	<title>{% block title %}تک موزیک{% endblock %}</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-rtl.css' %}">
@@ -23,26 +24,42 @@
               			    <span class="icon-bar"></span>
               			    <span class="icon-bar"></span>
             		    </button>
-            		    <a class="navbar-brand" href="{% url 'music:index' %}">تک صدا</a>
+            		    <a class="navbar-brand" href="{% url 'music:index' %}">تک موزیک</a>
 	     	        </div>
 
           		  <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li {% if home_active %}class="active"{% endif %}>
-                            <a href="{% url 'music:index' %}">خانه</a>
+                            <a href="#">صفحه اصلی</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ترانه ها <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">فیلم</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">تئاتر</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">کنسرت</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">اخبار</a>
+                        </li>
+                        <li>
+                            <a href="#">تبلیغات</a>
                         </li>
                         <li>
                             <a href="#">
                                 تماس با ما
                             </a>
                         </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-left">
                         <li>
-                            <form class="navbar-form" action="#">
+                            <form class="navbar-form" action="/search">
                                 <div class="form-group">
-                                    <input type="text" name='q' class="form-control" placeholder="جستجو...">
+                                    <input type="text" name='q' class="form-control" placeholder="جستجو..." style="border-radius: 30px;">
                                 </div>
                                 <button type="جستجو" class="btn btn-default">جستجو</button>
                             </form>
@@ -65,8 +82,21 @@
                 </ul>
             {% endif %}
 
-            {% block content %}
-            {% endblock %}
+            <!-- LINKS -->
+            <div class="col-md-3" style="border: 1px solid; border-radius: 25px;">
+                L
+            </div>
+
+            <!-- POSTS -->
+            <div class="col-md-6">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <!-- ADVERTISEMENTS -->
+            <div class="col-md-3" style="border: 1px solid; border-radius: 25px">
+                A
+            </div>
         </div>
         <div class="push"></div>
     </div>
@@ -79,7 +109,7 @@
                 <div class="col-md-3">
                     <ul style="list-style: none; margin-bottom: 0px;">
                         <li style="margin-bottom: 15px;">
-                            <a href="W">فیلم</a>
+                            <a href="#">فیلم</a>
                         </li>
                         <li style="margin-bottom: 15px;">
                             <a href="#">تئاتر</a>
@@ -130,10 +160,11 @@
                     تمامی حقوق این وب سایت برای پاج تیکت محفوظ می باشد. | 1396 - 1394 © | طراحی وب سایت از پاج
                 </div>
             </div>
+
         </div>
     </footer>
-    <!-- Footer END -->
 
+    <!-- Footer END -->
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 
