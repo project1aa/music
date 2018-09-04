@@ -6,12 +6,38 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         {% for object in object_list %}
-            <div class="">
-                <a href="#">
-                    <img class="img-thumbnail img-responsive thumbnail cover-home" src="{{ object.image.url }}" alt="{{ object.title }}">
-                </a>
+            <div class="" style="border: 1px solid; border-radius: 10px; padding: 0 10px; margin: 10px;">
+                <h3 class="label-info" style="border-radius: 10px; padding: 5px;">
+                    دانلود آهنگ {{ object.singer.name }} بنام {{ object.name }}
+                </h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        aaaaaaaaaaaa
+                        <br>
+                        bbbbbbbbbbb
+                        <br>
+                        cccccccccccccc
+                        <br>
+                        ddddddddddddddddd
+                        </pre>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#">
+                            <img width="340px" class="img-thumbnail img-responsive" src="{{ object.image.url }}" alt="{{ object.title }}">
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-offset-8 col-md-4">
+                    <div class="">
+                        <a href="#" style="font-size: 16px; text-decoration: none;">
+                            ادامه مطلب / دانلود
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>

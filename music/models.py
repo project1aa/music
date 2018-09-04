@@ -54,7 +54,7 @@ class Song(models.Model):
     def list_genres(self):
         return ', '.join([genre.name for genre in self.genres.all()])
 
-    def list_lagenres(self):
+    def list_languages(self):
         return ', '.join([lang.name for lang in self.languages.all()])
 
     def save(self, *args, **kwargs):

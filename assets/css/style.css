@@ -108,7 +108,7 @@ html, body {
 	min-height: 320px;
 	min-width: 460px;
 	height: 320px;
-	width: 460px;	
+	width: 460px;
 }
 
 .news-list {
@@ -203,3 +203,5 @@ body {
 .label-big {
     font-size: 16px !important;
 }
+
+/* Search Input */
