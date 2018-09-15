@@ -8,10 +8,10 @@
 <div class="row">
     <div class="col-md-12">
         {% for object in object_list %}
-            <div class="" style="border: 1px solid; border-radius: 10px; padding: 0 10px; margin: 10px;">
-                <h3 class="label-info" style="border-radius: 10px; padding: 5px;">
+            <div class="" style="background: #fff; border: 1px solid #fff; border-radius: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px; margin-bottom: 10px;">
+                <h4 class="label-info" style="border-radius: 10px; padding: 10px; font-size: 19px;">
                     دانلود آهنگ {{ object.singer.name }} بنام {{ object.name }}
-                </h3>
+                </h4>
                 <div class="row">
                     <div class="col-md-6">
                         aaaaaaaaaaaa
@@ -30,15 +30,20 @@
                     </div>
                 </div>
                 <hr>
-                <div class="col-md-offset-8 col-md-4">
-                    <div class="">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6" dir="ltr">
                         <a href="#" style="font-size: 16px; text-decoration: none;">
+                            <img src="{% static 'img/download.png' %}" alt="download">
                             ادامه مطلب / دانلود
-                            <img src="" alt="">
                         </a>
                     </div>
                 </div>
             </div>
+                <div style="background: #fff; border: 1px solid #fff; border-radius: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px; margin-bottom: 10px;">
+                    <h4 class="text-center">Advertisements</h4>
+                    <p class="text-center">aaaaaaaaaaaaaaaaaaaaaaaaa</p>
+
+                </div>
         {% endfor %}
     </div>
 </div>

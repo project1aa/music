@@ -1,0 +1,8 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+    {% for object in object_list %}
+        <h4>{{ object.title }}</h4>
+        <p>{{ object.text }}</p>
+    {% endfor %}
+{% endblock %}

@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('music.urls', namespace='music')),
+    path('news', include('news.urls', namespace='news')),
     path('short', include('shorturls.urls')),
     path('maintenance-mode', include('maintenance_mode.urls')),
 ]
