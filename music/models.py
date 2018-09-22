@@ -90,8 +90,25 @@ class Order(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.song.name, self.position)
 
+
 class Language(models.Model):
     name = models.CharField(max_length=32)
 
     def __str__(self):
         return self.name
+
+
+def album_directory_path(instance, album_name):
+    return 'files/album/{0}/{1}'.format(instance.singer.name, album_name)
+
+class Album(models.Model):
+    title = models.CharField(max_length=255)
+    singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
+    songs = models.ManyToManyField(Song)
+    description = models.TextField()
+    file1 = models.FileField(upload_to=album_directory_path, blank=True,
+        verbose_name='File 320')
+    file2 = models.FileField(upload_to=album_directory_path, blank=True,
+        verbose_name='File 128')
+    tags = TaggableManager()
+    image = models.ImageField(upload_to=album_directory_path)
