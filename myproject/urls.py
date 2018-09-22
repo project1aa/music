@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('', include('music.urls', namespace='music')),
     path('news', include('news.urls', namespace='news')),
+    path('contact_us', include('contact_us.urls', namespace='contact_us')),
     path('short', include('shorturls.urls')),
     path('maintenance-mode', include('maintenance_mode.urls')),
 ]
