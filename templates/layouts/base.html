@@ -36,15 +36,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ترانه ها <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">فیلم</a></li>
+                                <li><a href="#">تک آهنگ</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">تئاتر</a></li>
+                                <li><a href="#"></a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">کنسرت</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#">اخبار</a>
+                            <a href="#">اخبار موسیقی</a>
                         </li>
                         <li>
                             <a href="#">تبلیغات</a>
@@ -90,53 +90,32 @@
 
                 <h5><strong>تک آهنگ</strong></h5>
                 <ul>
-                    <li>one</li>
-                    <li>twotwotwo</li>
-                    <li>three</li>
+                    <li><a href="#">فارسی</a></li>
+                    <li><a href="#">ترکی</a></li>
+                    <li><a href="#">عربی</a></li>
+                    <li><a href="#">کردی</a></li>
+                    <li><a href="#">لری</a></li>
                 </ul>
 
-                <h5><strong>آلبوم ها</strong></h5>
-                <ul>
-                    <li>one</li>
-                    <li>twotwotwo</li>
-                    <li>three</li>
-                </ul>
+                <h5><a href="#"><strong>آلبوم ها</strong></a></h5>
                 <h5><strong>آهنگ های پیشنهادی</strong></h5>
                 <ul>
-                    <li>one</li>
-                    <li>twotwotwo</li>
-                    <li>three</li>
+                    <li><a href="#">شاد</a></li>
+                    <li><a href="#">غمگین</a></li>
+                    <li><a href="#">بی کلام</a></li>
                 </ul>
                 <h5><strong>مداحی</strong></h5>
                 <ul>
+                    <li><a href="#">فارسی</a></li>
+                    <li><a href="#">عربی</a></li>
+                    <li><a href="#">انگلیسی</a></li>
+                </ul>
+                <h5><a href="#"><strong>اخبار موسیقی</strong></a></h5>
+                <!-- <ul>
                     <li>one</li>
                     <li>twotwotwo</li>
                     <li>three</li>
-                </ul>
-                <h5><strong>اخبار موسیقی</strong></h5>
-                <ul>
-                    <li>one</li>
-                    <li>twotwotwo</li>
-                    <li>three</li>
-                </ul>
-
-                <hr>
-                <h4 class="label-info" style="border-radius: 10px; padding: 10px; font-size: 19px;">
-                    آرشیو خوانندگان
-                </h4>
-                <ul>
-                    <li>one</li>
-                    <li>twotwotwo</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                    <li>three</li>
-                </ul>
-
+                </ul> -->
             </div>
 
             <!-- POSTS -->
@@ -151,20 +130,11 @@
                     آهنگ های جدید
                 </h4>
                 <ul>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
-                    <li>one</li>
+                    {% if latest_songs %}
+                        {% for song in latest_songs %}
+                            <li><a href="#">دانلود آهنگ {{ song.name }} از {{ song.singer.name }}</a></li>
+                        {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>
